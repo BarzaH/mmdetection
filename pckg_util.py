@@ -26,15 +26,18 @@ def install_and_import(package, version="", params="", link="", packageimportnam
 
         if link:
             installation_cmd_list.append(link)
+
         try:
             subprocess.check_call([sys.executable, "-m", "ensurepip", "--upgrade"])
             subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "pip"])
+        except Exception as e:
+            print(e)
 
+        try:
             if "INSTALL_IGNORE_SSL" in os.environ and os.environ["INSTALL_IGNORE_SSL"]==True:
                 domain = urlparse(link).netloc
                 installation_cmd_list.append("--trusted-host")
                 installation_cmd_list.append(domain)
-
             subprocess.check_call([sys.executable, "-m", "pip", *installation_cmd_list])
         except Exception as e:
             print(e)
