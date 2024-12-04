@@ -79,13 +79,13 @@ def check_gpu_and_torch_compatibility():
         else:            
             install_and_import(
                 "torch",
-                "1.13.0+cu113",
+                "1.13.0+cu116",
                 "-f",
                 "https://download.pytorch.org/whl/torch_stable.html",
             )
             install_and_import(
                 "torchvision",
-                "0.15.0+cu113",
+                "0.15.0+cu116",
                 "-f",
                 "https://download.pytorch.org/whl/torch_stable.html",
             )            
